@@ -1,0 +1,1 @@
+pandoc 1.13.md --pdf-engine=xelatex --variable "geometry=margin=1in" -o 1.13.pdf
