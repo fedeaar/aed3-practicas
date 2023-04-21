@@ -1,0 +1,30 @@
+2.
+
+induccion: la solucion parcial de tomar de triples y un excedente hasta el elemento k es optima para el subconjunto de k productos que considera.
+
+solparcial: los k productos comprados de mayor precio
+
+caso base k=0 el subconjunto vacio es optimo contra cualquier otro subconjunto vacio
+
+k>0 sup. que el subconjunto de k considerado por el algoritmo es optimo de entre todos los subconjuntos posibles con esos elementos luego;
+
+si k + 1 = 1 mod 3, no conviene reemplazar el nuevo elemento por alguno de los grupos, ya que por definicion tiene precio menor que cualquier otro.
+Entonces dado que por hi la solucion k es óptima, la solución óptima en ḱ+1 será simplemente dejar solo al k+1-ésimo elemento
+
+análogamente si k + 1 = 2 mod 3, si se reemplzan los dos elementos aislados (tomando el del caso anterior) en grupos distintos, 
+tendran menor descuento que cualquier otro, y tampoco conviene colocar a los dos en uno solo porque como descuento solo se toma el menor,
+que tiene menos beneficio. Sería óptimo dejar solos a estos dos elementos.
+
+si k + 1 = 0 mod 3, entonces se pueden agregar los 3 elmentos aislados con un descuento del k+1-ésimo elemento. De manera análoga
+a los ejemplos anteriores no conviene colocarlos en otros grupos. Por lo tanto al ser la solución en k óptima, y la agrupación de 3
+la acción con más beneficio, esta es la solucion óptima en k+1
+
+
+
+3.
+
+f(i, c) = 0                                     si c > C o i >= N 
+          f(i+1, c)                             si c +w[i] > C
+          max(f(i+1, c+w[i])+p[i], f(i+1, c))   si no  
+
+f(0, 0)
