@@ -7,19 +7,19 @@ def puentes(A, n):
     B = []    
     t = 0
 
-    def phi(v, p):
+    def phi(v):
         nonlocal t
         t = t + 1
-        R[v] = 1
         S[v] = t
+        R[v] = 1
         bmin = np.inf 
         for w in A[v]:
-            if w == p: # padre
+            if w == v:  # padre
                 continue
             if R[w] == 1:
-                if S[w] < S[v]: # back-edge
+                if S[w] < S[v]:  # back-edge
                     x = S[w]
-                else: # "forward-edge"
+                else:  # "forward-edge"
                     continue
             else: # hijo
                 x = phi(w, v)
@@ -33,7 +33,7 @@ def puentes(A, n):
 
     for i in range(n):
         if R[i] == 0:
-            phi(i, -1)
+            phi(i)
 
     B.sort()
     return B
